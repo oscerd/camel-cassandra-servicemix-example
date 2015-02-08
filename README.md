@@ -49,7 +49,7 @@ The Apache Servicemix 5.4.0 is the correct release.
 
 - Inside Karaf execute the following instructions:
 
-- Install Google Guava
+- __Install Google Guava Bundle__
 
 ```shell
 
@@ -57,7 +57,7 @@ karaf@root> osgi:install -s mvn:com.google.guava/guava/16.0.1
 
 ```
 
-- Install codahale metrics
+- __Install codahale metrics Bundle__
 
 ```shell
 
@@ -65,7 +65,7 @@ karaf@root> osgi:install -s mvn:com.codahale.metrics/metrics-core/3.0.2
 
 ```
 
-- Install Netty
+- __Install Netty Bundle__
 
 ```shell
 
@@ -73,7 +73,7 @@ karaf@root> osgi:install -s mvn:io.netty/netty/3.9.0.Final
 
 ```
 
-- Install lz4
+- __Install lz4 Bundle__
 
 ```shell
 
@@ -81,7 +81,7 @@ karaf@root> osgi:install -s mvn:net.jpountz.lz4/lz4/1.2.0
 
 ```
 
-- Install Snappy Java
+- __Install Snappy Java Bundle__
 
 ```shell
 
@@ -89,7 +89,7 @@ karaf@root> osgi:install -s mvn:org.xerial.snappy/snappy-java/1.0.4
 
 ```
 
-- Install Datastax Java Driver
+- __Install Datastax Java Driver Bundle__
 
 ```shell
 
@@ -97,7 +97,7 @@ karaf@root> osgi:install -s mvn:com.datastax.cassandra/cassandra-driver-core/2.1
 
 ```
 
-- Install Camel Cassandra 
+- __Install Camel Cassandra Bundle__ 
 
 ```shell
 
