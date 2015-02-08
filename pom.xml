@@ -1,0 +1,54 @@
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>com.github.oscerd</groupId>
+   <artifactId>camel-cassandra-example</artifactId>
+   <version>1.0.0</version>
+   <name>Camel Cassandra Route Example</name>
+    <packaging>bundle</packaging>
+   <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <camel.version>2.13.2</camel.version>
+      <slf4j.version>1.6.6</slf4j.version>
+   </properties>
+  
+   <build>
+      <plugins>
+         <plugin>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-maven-plugin</artifactId>
+            <version>${camel.version}</version>
+         </plugin>
+         <!-- produce bundle as end result -->
+          <plugin>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>maven-bundle-plugin</artifactId>
+            <version>2.5.3</version>
+            <extensions>true</extensions>
+         </plugin>
+      </plugins>
+   </build>
+   <dependencies>
+      <dependency>
+         <groupId>org.apache.camel</groupId>
+         <artifactId>camel-core</artifactId>
+         <version>${camel.version}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.apache.camel</groupId>
+         <artifactId>camel-spring</artifactId>
+         <version>${camel.version}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.slf4j</groupId>
+         <artifactId>slf4j-log4j12</artifactId>
+         <version>${slf4j.version}</version>
+         <scope>runtime</scope>
+      </dependency>
+    <dependency>
+      <groupId>com.github.oscerd</groupId>
+      <artifactId>camel-cassandra</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+   </dependencies>
+
+</project>
