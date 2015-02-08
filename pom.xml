@@ -1,13 +1,13 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
    <modelVersion>4.0.0</modelVersion>
    <groupId>com.github.oscerd</groupId>
-   <artifactId>camel-cassandra-example</artifactId>
-   <version>1.0.0</version>
-   <name>Camel Cassandra Route Example</name>
+   <artifactId>camel-cassandra-servicemix-example</artifactId>
+   <version>1.0.0-SNAPSHOT</version>
+   <name>Camel Cassandra Servicemix Route Example</name>
     <packaging>bundle</packaging>
    <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <camel.version>2.13.2</camel.version>
+      <camel.version>2.14.1</camel.version>
       <slf4j.version>1.6.6</slf4j.version>
    </properties>
   
