@@ -1,12 +1,13 @@
 # Camel Cassandra Component Servicemix Example
 
+This is a simple example of a Camel route based on the Camel-cassandra component (https://github.com/oscerd/camel-cassandra) I've developed.
+This route will be deployed on Apache Servicemix.
+
 # Setting up the environment and deployment
 
+To run this example you need to follow these instructions.
+
 # Setting up Apache-Cassandra
-
-This is a simple example of a Camel route based on the Camel-cassandra component (https://github.com/oscerd/camel-cassandra) I've developed.
-
-To run this example you need to:
 
 - Install Apache Cassandra from http://cassandra.apache.org/download/ . In my configuration I've used Apache Cassandra version 2.1.2.
 
