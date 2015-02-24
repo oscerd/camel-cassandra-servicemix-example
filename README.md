@@ -53,7 +53,7 @@ The Apache Servicemix 5.4.0 is the correct release.
 
 ```shell
 
-karaf@root> osgi:install -s mvn:com.google.guava/guava/16.0.1
+karaf@root> osgi:install -s mvn:com.google.guava/guava/14.0.1
 
 ```
 
@@ -93,7 +93,7 @@ karaf@root> osgi:install -s mvn:org.xerial.snappy/snappy-java/1.0.4
 
 ```shell
 
-karaf@root> osgi:install -s mvn:com.datastax.cassandra/cassandra-driver-core/2.1.1
+karaf@root> osgi:install -s mvn:com.datastax.cassandra/cassandra-driver-core/2.1.3
 
 ```
 
@@ -101,7 +101,7 @@ karaf@root> osgi:install -s mvn:com.datastax.cassandra/cassandra-driver-core/2.1
 
 ```shell
 
-karaf@root> osgi:install -s mvn:com.github.oscerd/camel-cassandra/1.0.0
+karaf@root> osgi:install -s mvn:com.github.oscerd/camel-cassandra/1.1.0
 
 ```
 

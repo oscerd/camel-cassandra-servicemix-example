@@ -26,7 +26,6 @@ public class CamelCassandraRouteBuilder extends RouteBuilder {
     	String addr = "127.0.0.1";
     	List<String> collAddr = new ArrayList<String>();
     	collAddr.add(addr);
-    	
         Set<String> tags = new HashSet<String>();
         tags.add("1993");
         tags.add("Alternative Metal");
