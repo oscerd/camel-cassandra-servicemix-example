@@ -37,11 +37,11 @@ SOURCE 'populate.cql'
 
 # Setting up Servicemix
 
-Camel-Cassandra component is based on camel-core 2.14.1 release. So we need to use an Apache Servicemix version based on this release.
+Camel-Cassandra component is based on camel-core 2.15.2 release. So we need to use an Apache Servicemix version based on this release.
 
-The Apache Servicemix 5.4.0 is the correct release.
+The Apache Servicemix 6.0.0.M2 is the correct release.
 
-- Download the Apache Servicemix 5.4.0 package from: http://servicemix.apache.org/downloads/servicemix-5.4.0.html
+- Download the Apache Servicemix 6.0.0.M2 package from: http://servicemix.apache.org/downloads/servicemix-6.0.0.M2.html
 
 - Unzip the package in a directory (we denote this folder with $SERVICEMIX_HOME)
 
@@ -53,7 +53,7 @@ The Apache Servicemix 5.4.0 is the correct release.
 
 ```shell
 
-karaf@root> osgi:install -s mvn:com.google.guava/guava/14.0.1
+karaf@root> install -s mvn:com.google.guava/guava/14.0.1
 
 ```
 
@@ -61,15 +61,55 @@ karaf@root> osgi:install -s mvn:com.google.guava/guava/14.0.1
 
 ```shell
 
-karaf@root> osgi:install -s mvn:com.codahale.metrics/metrics-core/3.0.2
+karaf@root> install -s mvn:com.codahale.metrics/metrics-core/3.0.2
 
 ```
 
-- __Install Netty Bundle__
+- __Install Netty Common Bundle__
 
 ```shell
 
-karaf@root> osgi:install -s mvn:io.netty/netty/3.9.0.Final
+karaf@root> install -s mvn:io.netty/netty-common/4.0.27.Final
+
+```
+
+- __Install Netty Buffer Bundle__
+
+```shell
+
+karaf@root> install -s mvn:io.netty/netty-buffer/4.0.27.Final
+
+```
+
+- __Install Netty Transport Bundle__
+
+```shell
+
+karaf@root> install -s mvn:io.netty/netty-transport/4.0.27.Final
+
+```
+
+- __Install Netty Codec Bundle__
+
+```shell
+
+karaf@root> install -s mvn:io.netty/netty-codec/4.0.27.Final
+
+```
+
+- __Install Netty Transport Native Epoll Bundle__
+
+```shell
+
+karaf@root> install -s mvn:io.netty/netty-handler/4.0.27.Final
+
+```
+
+- __Install Netty Handler Bundle__
+
+```shell
+
+karaf@root> install -s mvn:io.netty/netty-transport-native-epoll/4.0.27.Final
 
 ```
 
@@ -77,7 +117,7 @@ karaf@root> osgi:install -s mvn:io.netty/netty/3.9.0.Final
 
 ```shell
 
-karaf@root> osgi:install -s mvn:net.jpountz.lz4/lz4/1.2.0
+karaf@root> install -s mvn:net.jpountz.lz4/lz4/1.2.0
 
 ```
 
@@ -85,7 +125,7 @@ karaf@root> osgi:install -s mvn:net.jpountz.lz4/lz4/1.2.0
 
 ```shell
 
-karaf@root> osgi:install -s mvn:org.xerial.snappy/snappy-java/1.0.4
+karaf@root> install -s mvn:org.xerial.snappy/snappy-java/1.0.4
 
 ```
 
@@ -93,7 +133,7 @@ karaf@root> osgi:install -s mvn:org.xerial.snappy/snappy-java/1.0.4
 
 ```shell
 
-karaf@root> osgi:install -s mvn:com.datastax.cassandra/cassandra-driver-core/2.1.3
+karaf@root> install -s mvn:com.datastax.cassandra/cassandra-driver-core/2.1.6
 
 ```
 
@@ -101,7 +141,7 @@ karaf@root> osgi:install -s mvn:com.datastax.cassandra/cassandra-driver-core/2.1
 
 ```shell
 
-karaf@root> osgi:install -s mvn:com.github.oscerd/camel-cassandra/1.1.0
+karaf@root> install -s mvn:com.github.oscerd/camel-cassandra/1.2.0
 
 ```
 
@@ -143,14 +183,18 @@ you should see something like this:
 
 ```shell
 
-[ 211] [Active     ] [            ] [       ] [   80] Guava: Google Core Libraries for Java (16.0.1)
-[ 212] [Active     ] [            ] [       ] [   80] Metrics Core (3.0.2)
-[ 213] [Active     ] [            ] [       ] [   80] The Netty Project (3.9.0.Final)
-[ 214] [Active     ] [            ] [       ] [   80] mvn:net.jpountz.lz4/lz4/1.2.0
-[ 215] [Active     ] [            ] [       ] [   80] org.xerial.snappy.snappy-java (1.0.4)
-[ 216] [Active     ] [            ] [       ] [   80] DataStax Java Driver for Apache Cassandra - Core (2.1.1)
-[ 217] [Active     ] [            ] [       ] [   80] Camel :: Cassandra (1.0.0)
-[ 218] [Active     ] [            ] [Started] [   80] Camel Cassandra Servicemix Route Example (1.0.0.SNAPSHOT)
+229 | Active |  80 | 14.0.1                             | Guava: Google Core Libraries for Java
+230 | Active |  80 | 3.0.2                              | Metrics Core
+233 | Active |  80 |                                    | mvn:net.jpountz.lz4/lz4/1.2.0
+235 | Active |  80 | 1.0.4                              | org.xerial.snappy.snappy-java
+236 | Active |  80 | 2.1.6                              | DataStax Java Driver for Apache Cassandra - Core
+237 | Active |  80 | 4.0.27.Final                       | Netty/Handler
+238 | Active |  80 | 4.0.27.Final                       | Netty/Buffer
+239 | Active |  80 | 4.0.27.Final                       | Netty/Common
+240 | Active |  80 | 4.0.27.Final                       | Netty/Transport
+241 | Active |  80 | 4.0.27.Final                       | Netty/Codec
+242 | Active |  80 | 4.0.27.Final                       | Netty/Transport/Native/Epoll
+246 | Active |  80 | 1.2.0                              | Camel :: Cassandra 
 
 ```
 
@@ -166,37 +210,37 @@ You should see something like this:
 
 ```shell
 
-2015-02-08 12:06:04,488 | INFO  | l Console Thread | ultOsgiApplicationContextCreator | ?                                   ? | 122 - org.springframework.osgi.extender - 1.2.1 | Discovered configurations {osgibundle:/META-INF/spring/*.xml} in bundle [Camel Cassandra Servicemix Route Example (com.github.oscerd.camel-cassandra-servicemix-example)]
-2015-02-08 12:06:04,489 | INFO  | xtenderThread-13 | OsgiBundleXmlApplicationContext  | ?                                   ? | 79 - org.apache.servicemix.bundles.spring-context - 3.2.11.RELEASE_1 | Refreshing OsgiBundleXmlApplicationContext(bundle=com.github.oscerd.camel-cassandra-servicemix-example, config=osgibundle:/META-INF/spring/*.xml): startup date [Sun Feb 08 12:06:04 CET 2015]; root of context hierarchy
-2015-02-08 12:06:04,490 | INFO  | xtenderThread-13 | OsgiBundleXmlApplicationContext  | ?                                   ? | 79 - org.apache.servicemix.bundles.spring-context - 3.2.11.RELEASE_1 | Application Context service already unpublished
-2015-02-08 12:06:04,492 | INFO  | xtenderThread-13 | XmlBeanDefinitionReader          | ?                                   ? | 77 - org.apache.servicemix.bundles.spring-beans - 3.2.11.RELEASE_1 | Loading XML bean definitions from URL [bundle://227.0:0/META-INF/spring/camel-context.xml]
-2015-02-08 12:06:04,553 | INFO  | xtenderThread-13 | WaiterApplicationContextExecutor | ?                                   ? | 122 - org.springframework.osgi.extender - 1.2.1 | No outstanding OSGi service dependencies, completing initialization for OsgiBundleXmlApplicationContext(bundle=com.github.oscerd.camel-cassandra-servicemix-example, config=osgibundle:/META-INF/spring/*.xml)
-2015-02-08 12:06:04,555 | INFO  | xtenderThread-14 | DefaultListableBeanFactory       | ?                                   ? | 77 - org.apache.servicemix.bundles.spring-beans - 3.2.11.RELEASE_1 | Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@4a8b9b70: defining beans [camel1:beanPostProcessor,camel1,camelCassandraBuilder]; root of factory hierarchy
-2015-02-08 12:06:04,569 | INFO  | xtenderThread-14 | OsgiSpringCamelContext           | ?                                   ? | 116 - org.apache.camel.camel-core - 2.14.1 | Apache Camel 2.14.1 (CamelContext: camel1) is starting
-2015-02-08 12:06:04,569 | INFO  | xtenderThread-14 | ManagedManagementStrategy        | ?                                   ? | 116 - org.apache.camel.camel-core - 2.14.1 | JMX is enabled
-2015-02-08 12:06:04,639 | INFO  | xtenderThread-14 | OsgiSpringCamelContext           | ?                                   ? | 116 - org.apache.camel.camel-core - 2.14.1 | AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
-2015-02-08 12:06:04,640 | INFO  | xtenderThread-14 | OsgiSpringCamelContext           | ?                                   ? | 116 - org.apache.camel.camel-core - 2.14.1 | StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
-2015-02-08 12:06:04,677 | INFO  | xtenderThread-14 | OsgiSpringCamelContext           | ?                                   ? | 116 - org.apache.camel.camel-core - 2.14.1 | Route: route7 started and consuming from: Endpoint[timer://timer?fixedRate=true&period=10000&repeatCount=1]
-2015-02-08 12:06:04,677 | INFO  | xtenderThread-14 | OsgiSpringCamelContext           | ?                                   ? | 116 - org.apache.camel.camel-core - 2.14.1 | Total 1 routes, of which 1 is started.
-2015-02-08 12:06:04,677 | INFO  | xtenderThread-14 | OsgiSpringCamelContext           | ?                                   ? | 116 - org.apache.camel.camel-core - 2.14.1 | Apache Camel 2.14.1 (CamelContext: camel1) started in 0.108 seconds
-2015-02-08 12:06:04,679 | INFO  | xtenderThread-14 | OsgiBundleXmlApplicationContext  | ?                                   ? | 79 - org.apache.servicemix.bundles.spring-context - 3.2.11.RELEASE_1 | Publishing application context as OSGi service with properties {org.springframework.context.service.name=com.github.oscerd.camel-cassandra-servicemix-example, Bundle-SymbolicName=com.github.oscerd.camel-cassandra-servicemix-example, Bundle-Version=1.0.0.SNAPSHOT}
-2015-02-08 12:06:04,681 | INFO  | xtenderThread-14 | ContextLoaderListener            | ?                                   ? | 122 - org.springframework.osgi.extender - 1.2.1 | Application context successfully refreshed (OsgiBundleXmlApplicationContext(bundle=com.github.oscerd.camel-cassandra-servicemix-example, config=osgibundle:/META-INF/spring/*.xml))
-2015-02-08 12:06:05,678 | INFO  |  - timer://timer | Querying Cassandra               | ?                                   ? | 116 - org.apache.camel.camel-core - 2.14.1 | Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
-2015-02-08 12:06:05,713 | INFO  |  - timer://timer | DCAwareRoundRobinPolicy          | ?                                   ? | 217 - com.datastax.driver.core - 2.1.1 | Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
-2015-02-08 12:06:05,714 | INFO  |  Driver worker-0 | Cluster                          | ?                                   ? | 217 - com.datastax.driver.core - 2.1.1 | New Cassandra host /127.0.0.1:9042 added
-2015-02-08 12:06:05,741 | INFO  |  - timer://timer | CamelCassandraRouteBuilder       | ?                                   ? | 116 - org.apache.camel.camel-core - 2.14.1 | Id: 6065efa0-af82-11e4-9eae-e15e042f3dd3 - Album: Undertow - Title: Intolerance
-2015-02-08 12:06:05,742 | INFO  |  - timer://timer | CamelCassandraRouteBuilder       | ?                                   ? | 116 - org.apache.camel.camel-core - 2.14.1 | Id: 606664d0-af82-11e4-9eae-e15e042f3dd3 - Album: Undertow - Title: Prison Sex
-2015-02-08 12:06:05,742 | INFO  |  - timer://timer | CamelCassandraRouteBuilder       | ?                                   ? | 116 - org.apache.camel.camel-core - 2.14.1 | Id: 60670110-af82-11e4-9eae-e15e042f3dd3 - Album: Undertow - Title: Sober
-2015-02-08 12:06:05,742 | INFO  |  - timer://timer | Inserting the object             | ?                                   ? | 116 - org.apache.camel.camel-core - 2.14.1 | Exchange[ExchangePattern: InOnly, BodyType: String, Body: ]
-2015-02-08 12:06:05,771 | INFO  |  - timer://timer | DCAwareRoundRobinPolicy          | ?                                   ? | 217 - com.datastax.driver.core - 2.1.1 | Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
-2015-02-08 12:06:05,771 | INFO  |  Driver worker-0 | Cluster                          | ?                                   ? | 217 - com.datastax.driver.core - 2.1.1 | New Cassandra host /127.0.0.1:9042 added
-2015-02-08 12:06:05,784 | INFO  |  - timer://timer | Querying Cassandra               | ?                                   ? | 116 - org.apache.camel.camel-core - 2.14.1 | Exchange[ExchangePattern: InOnly, BodyType: String, Body: ]
-2015-02-08 12:06:05,808 | INFO  |  - timer://timer | DCAwareRoundRobinPolicy          | ?                                   ? | 217 - com.datastax.driver.core - 2.1.1 | Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
-2015-02-08 12:06:05,809 | INFO  |  Driver worker-0 | Cluster                          | ?                                   ? | 217 - com.datastax.driver.core - 2.1.1 | New Cassandra host /127.0.0.1:9042 added
-2015-02-08 12:06:05,821 | INFO  |  - timer://timer | CamelCassandraRouteBuilder       | ?                                   ? | 116 - org.apache.camel.camel-core - 2.14.1 | Id: 532c650d-2596-478c-b770-603cd73abca1 - Album: Undertow - Title: Bottom
-2015-02-08 12:06:05,822 | INFO  |  - timer://timer | CamelCassandraRouteBuilder       | ?                                   ? | 116 - org.apache.camel.camel-core - 2.14.1 | Id: 6065efa0-af82-11e4-9eae-e15e042f3dd3 - Album: Undertow - Title: Intolerance
-2015-02-08 12:06:05,822 | INFO  |  - timer://timer | CamelCassandraRouteBuilder       | ?                                   ? | 116 - org.apache.camel.camel-core - 2.14.1 | Id: 606664d0-af82-11e4-9eae-e15e042f3dd3 - Album: Undertow - Title: Prison Sex
-2015-02-08 12:06:05,822 | INFO  |  - timer://timer | CamelCassandraRouteBuilder       | ?                                   ? | 116 - org.apache.camel.camel-core - 2.14.1 | Id: 60670110-af82-11e4-9eae-e15e042f3dd3 - Album: Undertow - Title: Sober
+2015-06-06 19:11:34,660 | INFO  | l for user karaf | ultOsgiApplicationContextCreator | 106 - org.springframework.osgi.extender - 1.2.1 | Discovered configurations {osgibundle:/META-INF/spring/*.xml} in bundle [Camel Cassandra Servicemix Route Example (com.github.oscerd.camel-cassandra-servicemix-example)]
+2015-06-06 19:11:34,660 | INFO  | ExtenderThread-5 | OsgiBundleXmlApplicationContext  | 101 - org.apache.servicemix.bundles.spring-context - 3.2.11.RELEASE_1 | Refreshing OsgiBundleXmlApplicationContext(bundle=com.github.oscerd.camel-cassandra-servicemix-example, config=osgibundle:/META-INF/spring/*.xml): startup date [Sat Jun 06 19:11:34 CEST 2015]; root of context hierarchy
+2015-06-06 19:11:34,662 | INFO  | ExtenderThread-5 | OsgiBundleXmlApplicationContext  | 101 - org.apache.servicemix.bundles.spring-context - 3.2.11.RELEASE_1 | Application Context service already unpublished
+2015-06-06 19:11:34,663 | INFO  | ExtenderThread-5 | XmlBeanDefinitionReader          | 99 - org.apache.servicemix.bundles.spring-beans - 3.2.11.RELEASE_1 | Loading XML bean definitions from URL [bundle://247.0:0/META-INF/spring/camel-context.xml]
+2015-06-06 19:11:34,768 | INFO  | ExtenderThread-5 | WaiterApplicationContextExecutor | 106 - org.springframework.osgi.extender - 1.2.1 | No outstanding OSGi service dependencies, completing initialization for OsgiBundleXmlApplicationContext(bundle=com.github.oscerd.camel-cassandra-servicemix-example, config=osgibundle:/META-INF/spring/*.xml)
+2015-06-06 19:11:34,772 | INFO  | ExtenderThread-6 | DefaultListableBeanFactory       | 99 - org.apache.servicemix.bundles.spring-beans - 3.2.11.RELEASE_1 | Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@19e5763c: defining beans [camel1:beanPostProcessor,camel1,camelCassandraBuilder]; root of factory hierarchy
+2015-06-06 19:11:34,816 | INFO  | ExtenderThread-6 | OsgiSpringCamelContext           | 113 - org.apache.camel.camel-core - 2.15.2 | Apache Camel 2.15.2 (CamelContext: camel1) is starting
+2015-06-06 19:11:34,817 | INFO  | ExtenderThread-6 | ManagedManagementStrategy        | 113 - org.apache.camel.camel-core - 2.15.2 | JMX is enabled
+2015-06-06 19:11:34,912 | INFO  | ExtenderThread-6 | OsgiSpringCamelContext           | 113 - org.apache.camel.camel-core - 2.15.2 | AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
+2015-06-06 19:11:34,912 | INFO  | ExtenderThread-6 | OsgiSpringCamelContext           | 113 - org.apache.camel.camel-core - 2.15.2 | StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+2015-06-06 19:11:34,963 | INFO  | ExtenderThread-6 | OsgiSpringCamelContext           | 113 - org.apache.camel.camel-core - 2.15.2 | Route: route3 started and consuming from: Endpoint[timer://timer?fixedRate=true&period=10000&repeatCount=1]
+2015-06-06 19:11:34,963 | INFO  | ExtenderThread-6 | OsgiSpringCamelContext           | 113 - org.apache.camel.camel-core - 2.15.2 | Total 1 routes, of which 1 is started.
+2015-06-06 19:11:34,963 | INFO  | ExtenderThread-6 | OsgiSpringCamelContext           | 113 - org.apache.camel.camel-core - 2.15.2 | Apache Camel 2.15.2 (CamelContext: camel1) started in 0.147 seconds
+2015-06-06 19:11:34,965 | INFO  | ExtenderThread-6 | OsgiBundleXmlApplicationContext  | 101 - org.apache.servicemix.bundles.spring-context - 3.2.11.RELEASE_1 | Publishing application context as OSGi service with properties {org.springframework.context.service.name=com.github.oscerd.camel-cassandra-servicemix-example, Bundle-SymbolicName=com.github.oscerd.camel-cassandra-servicemix-example, Bundle-Version=1.0.0.SNAPSHOT}
+2015-06-06 19:11:34,967 | INFO  | ExtenderThread-6 | ContextLoaderListener            | 106 - org.springframework.osgi.extender - 1.2.1 | Application context successfully refreshed (OsgiBundleXmlApplicationContext(bundle=com.github.oscerd.camel-cassandra-servicemix-example, config=osgibundle:/META-INF/spring/*.xml))
+2015-06-06 19:11:35,964 | INFO  |  - timer://timer | Querying Cassandra               | 113 - org.apache.camel.camel-core - 2.15.2 | Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+2015-06-06 19:11:36,045 | INFO  |  - timer://timer | DCAwareRoundRobinPolicy          | 236 - com.datastax.driver.core - 2.1.6 | Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+2015-06-06 19:11:36,045 | INFO  |  - timer://timer | Cluster                          | 236 - com.datastax.driver.core - 2.1.6 | New Cassandra host /127.0.0.1:9042 added
+2015-06-06 19:11:36,087 | INFO  |  - timer://timer | CamelCassandraRouteBuilder       | 113 - org.apache.camel.camel-core - 2.15.2 | Id: a7047050-0c6e-11e5-83a7-0d0908f21338 - Album: Undertow - Title: Intolerance
+2015-06-06 19:11:36,088 | INFO  |  - timer://timer | CamelCassandraRouteBuilder       | 113 - org.apache.camel.camel-core - 2.15.2 | Id: a7066c20-0c6e-11e5-83a7-0d0908f21338 - Album: Undertow - Title: Sober
+2015-06-06 19:11:36,088 | INFO  |  - timer://timer | CamelCassandraRouteBuilder       | 113 - org.apache.camel.camel-core - 2.15.2 | Id: a705a8d0-0c6e-11e5-83a7-0d0908f21338 - Album: Undertow - Title: Prison Sex
+2015-06-06 19:11:36,088 | INFO  |  - timer://timer | Inserting the object             | 113 - org.apache.camel.camel-core - 2.15.2 | Exchange[ExchangePattern: InOnly, BodyType: String, Body: ]
+2015-06-06 19:11:36,144 | INFO  |  - timer://timer | DCAwareRoundRobinPolicy          | 236 - com.datastax.driver.core - 2.1.6 | Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+2015-06-06 19:11:36,144 | INFO  |  - timer://timer | Cluster                          | 236 - com.datastax.driver.core - 2.1.6 | New Cassandra host /127.0.0.1:9042 added
+2015-06-06 19:11:36,162 | INFO  |  - timer://timer | Querying Cassandra               | 113 - org.apache.camel.camel-core - 2.15.2 | Exchange[ExchangePattern: InOnly, BodyType: String, Body: ]
+2015-06-06 19:11:36,213 | INFO  |  - timer://timer | DCAwareRoundRobinPolicy          | 236 - com.datastax.driver.core - 2.1.6 | Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+2015-06-06 19:11:36,213 | INFO  |  - timer://timer | Cluster                          | 236 - com.datastax.driver.core - 2.1.6 | New Cassandra host /127.0.0.1:9042 added
+2015-06-06 19:11:36,229 | INFO  |  - timer://timer | CamelCassandraRouteBuilder       | 113 - org.apache.camel.camel-core - 2.15.2 | Id: a7047050-0c6e-11e5-83a7-0d0908f21338 - Album: Undertow - Title: Intolerance
+2015-06-06 19:11:36,229 | INFO  |  - timer://timer | CamelCassandraRouteBuilder       | 113 - org.apache.camel.camel-core - 2.15.2 | Id: 22388bbb-fd23-4231-a11e-36492fd2f9e7 - Album: Undertow - Title: Bottom
+2015-06-06 19:11:36,229 | INFO  |  - timer://timer | CamelCassandraRouteBuilder       | 113 - org.apache.camel.camel-core - 2.15.2 | Id: a7066c20-0c6e-11e5-83a7-0d0908f21338 - Album: Undertow - Title: Sober
+2015-06-06 19:11:36,229 | INFO  |  - timer://timer | CamelCassandraRouteBuilder       | 113 - org.apache.camel.camel-core - 2.15.2 | Id: a705a8d0-0c6e-11e5-83a7-0d0908f21338 - Album: Undertow - Title: Prison Sex
 
 ```
 
