@@ -9,7 +9,7 @@ To run this example you need to follow these instructions.
 
 # Setting up Apache-Cassandra
 
-- Install Apache Cassandra from http://cassandra.apache.org/download/ . In my configuration I've used Apache Cassandra version 2.1.2.
+- Install Apache Cassandra from http://cassandra.apache.org/download/ . In my configuration I've used Apache Cassandra version 2.2.4.
 
 - Run Apache Cassandra by executing 
 
