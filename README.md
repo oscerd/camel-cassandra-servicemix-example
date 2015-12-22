@@ -86,7 +86,7 @@ mvn clean package
 
 ```shell
 
-karaf@root> osgi:install -s file:///$PROJECT_HOME/target/camel-cassandra-servicemix-example-1.0.0-SNAPSHOT.jar
+karaf@root> bundle:install -s file:///$PROJECT_HOME/target/camel-cassandra-servicemix-example-1.0.0-SNAPSHOT.jar
 
 ```
 
