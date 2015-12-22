@@ -37,11 +37,11 @@ SOURCE 'populate.cql'
 
 # Setting up Servicemix
 
-Camel-Cassandra component is based on camel-core 2.15.2 release. So we need to use an Apache Servicemix version based on this release.
+Camel-Cassandra component is based on camel-core 2.16.1 release. So we need to use an Apache Servicemix version based on this release.
 
-The Apache Servicemix 5.5.0 is the correct release.
+The Apache Servicemix 6.1.0 is the correct release.
 
-- Download the Apache Servicemix 5.5.0 package from: http://servicemix.apache.org/downloads/servicemix-5.5.0.html
+- Download the Apache Servicemix 6.1.0 package from: http://servicemix.apache.org/downloads/servicemix-6.1.0.html
 
 - Unzip the package in a directory (we denote this folder with $SERVICEMIX_HOME)
 
@@ -51,7 +51,7 @@ The Apache Servicemix 5.5.0 is the correct release.
 
 ```shell
 
-karaf@root> features:addurl mvn:com.github.oscerd/camel-cassandra/1.3.0/xml/features
+karaf@root> features:repo-add mvn:com.github.oscerd/camel-cassandra/1.4.0/xml/features
 
 
 ```
@@ -62,6 +62,7 @@ karaf@root> features:addurl mvn:com.github.oscerd/camel-cassandra/1.3.0/xml/feat
 
 karaf@root> feature:install camel-cassandra
 
+```
 
 # Deployment on Servicemix
 
